@@ -1,0 +1,19 @@
+<h2>Welcome to city search</h2>
+<h4>made by Michael Braginsky </h4>
+<div class="autocomplete" style="width:300px;">
+  <input style="width:300px;" id="countryInput" type="text" name="countryInput" placeholder="Country" #countryInput
+    (keyup)="getCitiesStartsWith(countryInput)" />
+  <div class="autocomplete-items" [ngClass]="{'extendedContainer': cities.length > 9}">
+
+    <div *ngFor="let city of cities; let i = index" [value]="city.cityName">
+      {{city.cityName}} {{city.country}} {{city.subCountry}}
+    </div>
+    <div *ngIf="cities.length > 9 && showMoreBtn" (click)="showMoreResults(countryInput)">
+      <b> More results...</b>
+    </div>
+
+  </div>
+</div>
+<!-- <button style="display: block;" *ngIf="cities.length > 0">
+    Load More
+  </button> -->
